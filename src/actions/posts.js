@@ -1,4 +1,4 @@
-import { UPDATE_POSTS } from './actionTypes';
+import { UPDATE_POSTS } from "./actionTypes";
 
 export function fetchPosts() {
   return (dispatch) => {
@@ -17,6 +17,6 @@ export function fetchPosts() {
 export function updatePosts(posts) {
   return {
     type: UPDATE_POSTS,
-    posts
+    posts,
   };
 }
