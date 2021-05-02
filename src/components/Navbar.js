@@ -14,6 +14,7 @@ function Navbar(props) {
       </div>
       <div className="search-container">
         <img
+          className="search-icon"
           src="https://image.flaticon.com/icons/png/128/622/622669.png"
           alt="search-icon"
         />
@@ -42,13 +43,13 @@ function Navbar(props) {
       <div className="right-nav">
         <div className="user">
           <img
-            src="https://image.flaticon.com/icons/png/128/2922/2922510.png"
+            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
             alt="user-dp"
-            id="user-dp"
+            id='user-dp'
           />
           <span>John Doe</span>
         </div>
-        <div className="nav-link">
+        <div className="nav-links">
           <ul>
             <li>
               <Link to="/login">Log In</Link>
