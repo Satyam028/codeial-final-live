@@ -4,16 +4,23 @@ import PropTypes from "prop-types";
 //componet App should connect with store for state as props
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home, Navbar, Page404, Login } from "./";
+import { Home, Navbar, Page404, Login, Signup } from "./";
 import { fetchPosts } from "../actions/posts";
-
-const Signup = () => <div>Signup</div>;
+import * as jwtDecode from "jwt-decode";
 
 class App extends React.Component {
   //Here we are going to fetch the posts from an API using conmponentDid Mount
   componentDidMount() {
     //here we are calling the fetchpost() from action and in action we will use async to fetch the data and store in redux store
     this.props.dispatch(fetchPosts());
+
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const user = jwtDecode(token);
+
+      console.log("user", user);
+    }
   }
 
   render() {
