@@ -10,4 +10,10 @@ export const SIGNUP_START = "SIGNUP_START";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILED = "SIGNUP_FAILED";
 
+//Authenticating the user
+export const AUTHENTICATE_USER = "AUTHENTICATE_USER";
+
+//logout action type
+export const LOG_OUT = "LOG_OUT";
+
 

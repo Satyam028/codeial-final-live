@@ -1,7 +1,9 @@
 import {
+  AUTHENTICATE_USER,
   LOGIN_FAILED,
   LOGIN_START,
   LOGIN_SUCCESS,
+  LOG_OUT,
   SIGNUP_FAILED,
   SIGNUP_START,
   SIGNUP_SUCCESS,
@@ -103,5 +105,20 @@ export function signup(name, email, password, confirmPassword) {
         }
         dispatch(signupFailed(data.message));
       });
+  };
+}
+
+//authenticate user
+export function authenticateUser(user) {
+  return {
+    type: AUTHENTICATE_USER,
+    user,
+  };
+}
+
+//logout action
+export function logoutUser() {
+  return {
+    type: LOG_OUT,
   };
 }

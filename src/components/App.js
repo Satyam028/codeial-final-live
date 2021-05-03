@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home, Navbar, Page404, Login, Signup } from "./";
 import { fetchPosts } from "../actions/posts";
 import * as jwtDecode from "jwt-decode";
+import { authenticateUser } from "../actions/auth";
 
 class App extends React.Component {
   //Here we are going to fetch the posts from an API using conmponentDid Mount
@@ -20,6 +21,15 @@ class App extends React.Component {
       const user = jwtDecode(token);
 
       console.log("user", user);
+
+      //store the user is reducer
+      this.props.dispatch(
+        authenticateUser({
+          email: user.email,
+          _id: user._id,
+          name: user.name,
+        })
+      );
     }
   }
 
