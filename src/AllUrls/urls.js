@@ -1,4 +1,4 @@
-const API_URLS = "https://codeial.com:8000/api/v2";
+const API_URLS = "http://codeial.com:8000/api/v2";
 
 export const APIUrls = {
   login: () => `${API_URLS}/users/login`,
