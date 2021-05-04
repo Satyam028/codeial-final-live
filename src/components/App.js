@@ -3,11 +3,40 @@ import PropTypes from "prop-types";
 
 //componet App should connect with store for state as props
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home, Navbar, Page404, Login, Signup } from "./";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { Home, Navbar, Page404, Login, Signup, Settings } from "./";
 import { fetchPosts } from "../actions/posts";
 import * as jwtDecode from "jwt-decode";
 import { authenticateUser } from "../actions/auth";
+
+const PrivateRoute = (privateRouteProps) => {
+  const { isLoggedIn, path, component: Component } = privateRouteProps;
+
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: {
+                from: props.location, //{ pathname : settings }
+              },
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
 
 class App extends React.Component {
   //Here we are going to fetch the posts from an API using conmponentDid Mount
@@ -22,7 +51,7 @@ class App extends React.Component {
 
       console.log("user", user);
 
-      //store the user is reducer
+      //store the user is reducer to store
       this.props.dispatch(
         authenticateUser({
           email: user.email,
@@ -35,7 +64,7 @@ class App extends React.Component {
 
   render() {
     console.log("PROPS", this.props);
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
     return (
       <Router>
         <div>
@@ -51,6 +80,11 @@ class App extends React.Component {
             />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <PrivateRoute
+              path="/settings"
+              component={Settings}
+              isLoggedIn={auth.isLoggedIn}
+            />
             <Route component={Page404} />
           </Switch>
         </div>
@@ -62,6 +96,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
   return {
     posts: state.posts,
+    auth: state.auth,
   };
 }
 

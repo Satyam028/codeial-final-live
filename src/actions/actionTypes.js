@@ -16,4 +16,7 @@ export const AUTHENTICATE_USER = "AUTHENTICATE_USER";
 //logout action type
 export const LOG_OUT = "LOG_OUT";
 
+//clear auth state to null
+export const CLEAR_AUTH_STATE = "CLEAR_AUTH_STATE";
+
 
