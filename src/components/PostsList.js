@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class PostsList extends Component {
   render() {
@@ -10,10 +11,12 @@ class PostsList extends Component {
           <div className="post-wrapper" key={post._id}>
             <div className="post-header">
               <div className="post-avatar">
+                <Link to={`/user/${post.user._id}`}>
                 <img
                   src="https://image.flaticon.com/icons/png/128/3135/3135715.png"
                   alt="user-pic"
-                />
+                  />
+                  </Link>
                 <div>
                   <span classname="post-author">{post.user.name}</span>
                   <span classname="post-time">a minute ago</span>

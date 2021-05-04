@@ -9,10 +9,21 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Home, Navbar, Page404, Login, Signup, Settings } from "./";
+import {
+  Home,
+  Navbar,
+  Page404,
+  Login,
+  Signup,
+  Settings,
+  UserProfile,
+} from "./";
 import { fetchPosts } from "../actions/posts";
 import * as jwtDecode from "jwt-decode";
 import { authenticateUser } from "../actions/auth";
+import { getAuthTokenFromLocalStorage } from "../AllUrls/utils";
+import { fetchUserFriends } from "../actions/friend";
+import friends from "../reducers/friends";
 
 const PrivateRoute = (privateRouteProps) => {
   const { isLoggedIn, path, component: Component } = privateRouteProps;
@@ -44,7 +55,7 @@ class App extends React.Component {
     //here we are calling the fetchpost() from action and in action we will use async to fetch the data and store in redux store
     this.props.dispatch(fetchPosts());
 
-    const token = localStorage.getItem("token");
+    const token = getAuthTokenFromLocalStorage();
 
     if (token) {
       const user = jwtDecode(token);
@@ -59,6 +70,7 @@ class App extends React.Component {
           name: user.name,
         })
       );
+      this.props.dispatch(fetchUserFriends());
     }
   }
 
@@ -75,7 +87,14 @@ class App extends React.Component {
               exact
               path="/"
               render={(props) => {
-                return <Home {...props} posts={posts} />;
+                return (
+                  <Home
+                    {...props}
+                    posts={posts}
+                    friends={friends}
+                    isLoggedI={auth.isLoggedIn}
+                  />
+                );
               }}
             />
             <Route path="/login" component={Login} />
@@ -83,6 +102,11 @@ class App extends React.Component {
             <PrivateRoute
               path="/settings"
               component={Settings}
+              isLoggedIn={auth.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/user/:userId"
+              component={UserProfile}
               isLoggedIn={auth.isLoggedIn}
             />
             <Route component={Page404} />

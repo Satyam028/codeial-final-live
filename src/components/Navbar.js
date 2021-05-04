@@ -53,9 +53,8 @@ class Navbar extends Component {
           {auth.isLoggedIn && (
             <div className="user">
               <img
-                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-                alt="user-dp"
-                id="user-dp"
+                src="https://image.flaticon.com/icons/png/128/3135/3135715.png"
+                alt="user-pic"
               />
               <span>{auth.user.name}</span>
             </div>
