@@ -92,7 +92,7 @@ class App extends React.Component {
                     {...props}
                     posts={posts}
                     friends={friends}
-                    isLoggedI={auth.isLoggedIn}
+                    isLoggedIn={auth.isLoggedIn}
                   />
                 );
               }}

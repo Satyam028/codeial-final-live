@@ -7,7 +7,13 @@ export const APIUrls = {
   fetchPosts: (page = 1, limit = 5) => `/posts?page=${page}&limit=${limit}`,
   userprofile: (userId) => `${API_URLS}/users/${userId}`,
   userFriends: () => `${API_URLS}/friendship/fetch_user_friends`,
-  addFriend: (userId) => `${API_URLS}/users/friendship/create_friendship ? user_id=${userId}`,
-  removeFriend: (userId) => `${API_URLS}/users/friendship/remove_friendship ? user_id=${userId}`,
-
+  addFriend: (userId) =>
+    `${API_URLS}/users/friendship/create_friendship ? user_id=${userId}`,
+  removeFriend: (userId) =>
+    `${API_URLS}/users/friendship/remove_friendship ? user_id=${userId}`,
+  createPost: () => `${API_URLS}/posts/create`,
+  createComment: () => `${API_URLS}/comments/`,
+  toggleLike: (id, likeTypes) =>
+    `${API_URLS}/likes/toggleable_id=${id}&likeable_type=${likeTypes}`,
+  userSearch: (searchText) => `${API_URLS}/users/search?text=${searchText}`,
 };

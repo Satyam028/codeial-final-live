@@ -36,3 +36,15 @@ export const ADD_FRIEND = "ADD_FRIEND";
 
 //removed friend from friendlist
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
+
+//added the post adding action
+export const ADD_POST = "ADD_POST";
+
+//added comment
+export const ADD_COMMENT = "ADD_COMMENT";
+
+//Update post likes
+export const UPDATE_POST_LIKES = "UPDATE_POST_LIKES";
+
+//search
+export const FETCH_SEARCH_RESULTS_SUCCESS = "FETCH_SEARCH_RESULTS_SUCCESS";
