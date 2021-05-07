@@ -10,6 +10,9 @@ import UserProfile from "./UserProfile";
 import CreatePost from "./CreatePost";
 import Post from "./Post";
 import Comment from "./Comment";
+import Chat from "./Chat";
+import FriendsList from "./FriendsList";
+import FriendsListItem from "./FriendsListItem";
 
 export {
   PostsList,
@@ -21,7 +24,10 @@ export {
   Signup,
   Settings,
   UserProfile,
+  FriendsList,
+  FriendsListItem,
   CreatePost,
   Post,
-  Comment
+  Comment,
+  Chat,
 };

@@ -3,6 +3,7 @@ import friends from "../reducers/friends";
 import { FriendsListItem } from "./";
 
 const FriendsList = (props) => {
+  const { friends } = this.props;
   return (
     <div className="friends-list">
       <div className="header">Friends</div>
@@ -12,8 +13,10 @@ const FriendsList = (props) => {
 
       {props.friends &&
         props.friends.map((friends) => (
-          <FriendsListItem friend={friends.to_user} key={friend._id} />
+          <FriendsListItem friends={friends.to_user} key={friends._id} />
         ))}
     </div>
   );
 };
+
+export default FriendsList;
