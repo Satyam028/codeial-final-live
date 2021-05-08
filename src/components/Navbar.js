@@ -64,7 +64,7 @@ class Navbar extends Component {
               <span>{auth.user.name}</span>
             </div>
           )}
-          <div className="nav-links">
+          <div className="nav-Links">
             <ul>
               {!auth.isLoggedIn && (
                 <li>

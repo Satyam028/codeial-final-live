@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import friends from "../reducers/friends";
 import { Chat, PostsList } from "./";
 import FriendsList from "./FriendsList";
 

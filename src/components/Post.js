@@ -34,7 +34,7 @@ class Post extends Component {
   };
 
   handlePostLikes = () => {
-    const { post } = this.props;
+    const { post, user } = this.props;
     this.props.dispatch(addLike(post._id, "Post", user._id));
   };
   render() {
